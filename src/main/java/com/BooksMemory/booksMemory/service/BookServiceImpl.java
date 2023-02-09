@@ -1,5 +1,6 @@
 package com.BooksMemory.booksMemory.service;
 
+import com.BooksMemory.booksMemory.exceptions.ResourceNotFoundException;
 import com.BooksMemory.booksMemory.model.Book;
 import com.BooksMemory.booksMemory.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -41,9 +42,17 @@ public class BookServiceImpl implements BookService {
     }
 
     public void deleteBook(Integer id) {
-        Book bookToDelete = bookRepository.findById(id).orElseThrow();
+        Book bookToDelete = getBookById(id).orElseThrow(() -> new ResourceNotFoundException("Book with id " + id + " doesn't exist!"));
         bookRepository.deleteById(bookToDelete.getId());
+    }
 
+    public Optional<Book> updateBook(Integer id, Book bookDto) {
+        Book bookToUpdate = getBookById(id).orElseThrow();
+
+        Book bookUpdated = bookToUpdate.update(bookDto);
+        bookRepository.save(bookUpdated);
+
+        return Optional.of(bookUpdated);
     }
 
 }

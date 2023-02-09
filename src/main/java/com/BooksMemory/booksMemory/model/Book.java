@@ -62,4 +62,12 @@ public class Book {
     public void setEditor(String editor) {
         this.editor = editor;
     }
+
+    public Book update(Book book) {
+        this.title = book.getTitle();
+        this.authorLastname = book.getAuthorLastname();
+        this.authorFirstname = book.getAuthorFirstname();
+        this.editor = book.getEditor();
+        return this;
+    }
 }

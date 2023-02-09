@@ -142,4 +142,19 @@ class BookServiceImplTest {
         //THEN
         assertThat(mockBookRepository.count()).isEqualTo(0);
     }
+
+    @Test
+    void updateBook() {
+        //GIVEN
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+
+        //WHEN
+        when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
+        book1.setEditor("Updated");
+
+        Book bookUpdated = bookServiceImpl.updateBook(1, book1).orElseThrow();
+
+        //THEN
+        Assertions.assertEquals("Updated", bookUpdated.getEditor());
+    }
 }
