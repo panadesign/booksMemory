@@ -1,6 +1,5 @@
 package com.BooksMemory.booksMemory.service;
 
-import com.BooksMemory.booksMemory.exceptions.ResourceNotFoundException;
 import com.BooksMemory.booksMemory.model.Book;
 import com.BooksMemory.booksMemory.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,10 @@ public class BookServiceImpl implements BookService {
 
     public Optional<Book> getBookByEditor(String editor) {
         return bookRepository.findByEditor(editor);
+    }
+
+    public Book addBook(Book book) {
+       return bookRepository.save(book);
     }
 
 }

@@ -112,4 +112,21 @@ class BookServiceImplTest {
                 .get()
                 .satisfies(p -> assertThat(p.getEditor()).isEqualTo(book1.getEditor()));
     }
+
+    @Test
+    void addBook() {
+        //GIVEN
+        List<Book> books = new ArrayList<>();
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        books.add(book1);
+
+        //WHEN
+        when(mockBookRepository.findAll()).thenReturn(books);
+        when(mockBookRepository.save(book1)).thenReturn(book1);
+
+        Book bookAdded = bookServiceImpl.addBook(book1);
+
+        //THEN
+        Assertions.assertTrue(books.contains(bookAdded));
+    }
 }
