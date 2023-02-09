@@ -8,16 +8,18 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    private String author;
+    private String authorLastname;
+    private String authorFirstname;
     private String editor;
 
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String editor) {
+    public Book(Integer id, String title, String authorLastname, String authorFirstname, String editor) {
         this.id = id;
         this.title = title;
-        this.author = author;
+        this.authorLastname = authorLastname;
+        this.authorFirstname = authorFirstname;
         this.editor = editor;
     }
 
@@ -37,12 +39,20 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getAuthorLastname() {
+        return authorLastname;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorLastname(String authorLastname) {
+        this.authorLastname = authorLastname;
+    }
+
+    public String getAuthorFirstname() {
+        return authorFirstname;
+    }
+
+    public void setAuthorFirstname(String authorFirstname) {
+        this.authorFirstname = authorFirstname;
     }
 
     public String getEditor() {

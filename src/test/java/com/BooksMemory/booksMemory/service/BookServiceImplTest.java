@@ -34,8 +34,8 @@ class BookServiceImplTest {
         //GIVEN
         List<Book> bookList = new ArrayList<>();
 
-        Book book1 = new Book(1, "Livre1", "Auteur1", "Editeur1");
-        Book book2 = new Book(2, "Livre2", "Auteur2", "Editeur2");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book2 = new Book(2, "Livre2", "Lastname2", "Firstname2", "Editeur2");
 
         bookList.add(book1);
         bookList.add(book2);
@@ -52,9 +52,10 @@ class BookServiceImplTest {
     @Test
     void getBookById() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Auteur1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
 
-        when(mockBookRepository.findById(1)).thenReturn(Optional.of(book1));
+        //WHEN
+        when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
         Optional<Book> book = bookServiceImpl.getBookById(1);
 
         //THEN
@@ -62,5 +63,53 @@ class BookServiceImplTest {
                 .isNotEmpty()
                 .get()
                 .satisfies(p -> assertThat(p.getTitle()).isEqualTo(book1.getTitle()));
+    }
+
+    @Test
+    void getBookByTitle() {
+        //GIVEN
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+
+        //WHEN
+        when(mockBookRepository.findByTitle(book1.getTitle())).thenReturn(Optional.of(book1));
+        Optional<Book> book = bookServiceImpl.getBookByTitle(book1.getTitle());
+
+        //THEN
+        assertThat(book)
+                .isNotEmpty()
+                .get()
+                .satisfies(p -> assertThat(p.getTitle()).isEqualTo(book1.getTitle()));
+    }
+
+    @Test
+    void getBookByAuthorLastname() {
+        //GIVEN
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+
+        //WHEN
+        when(mockBookRepository.findByAuthorLastname(book1.getAuthorLastname())).thenReturn(Optional.of(book1));
+        Optional<Book> book = bookServiceImpl.getBookByAuthorLastname(book1.getAuthorLastname());
+
+        //THEN
+        assertThat(book)
+                .isNotEmpty()
+                .get()
+                .satisfies(p -> assertThat(p.getAuthorLastname()).isEqualTo(book1.getAuthorLastname()));
+    }
+
+    @Test
+    void getBookByEditor() {
+        //GIVEN
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+
+        //WHEN
+        when(mockBookRepository.findByEditor(book1.getEditor())).thenReturn(Optional.of(book1));
+        Optional<Book> book = bookServiceImpl.getBookByEditor(book1.getEditor());
+
+        //THEN
+        assertThat(book)
+                .isNotEmpty()
+                .get()
+                .satisfies(p -> assertThat(p.getEditor()).isEqualTo(book1.getEditor()));
     }
 }

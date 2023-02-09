@@ -25,4 +25,16 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id);
     }
 
+    public Optional<Book> getBookByTitle(String title) {
+        return bookRepository.findByTitle(title);
+    }
+
+    public Optional<Book> getBookByAuthorLastname(String authorLastname) {
+        return bookRepository.findByAuthorLastname(authorLastname);
+    }
+
+    public Optional<Book> getBookByEditor(String editor) {
+        return bookRepository.findByEditor(editor);
+    }
+
 }
