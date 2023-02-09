@@ -1,0 +1,9 @@
+package com.BooksMemory.booksMemory.repository;
+
+import com.BooksMemory.booksMemory.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookRepository extends JpaRepository<Book, Integer> {
+}

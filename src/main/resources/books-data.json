@@ -1,0 +1,9 @@
+[
+  {
+    "_class": "com.BooksMemory.booksMemory.model.Book",
+    "id": 1,
+    "title": "Exils",
+    "author": "Joseph Koudelka",
+    "editor": "Delpire & Co"
+  }
+]
