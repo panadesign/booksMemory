@@ -40,4 +40,10 @@ public class BookServiceImpl implements BookService {
        return bookRepository.save(book);
     }
 
+    public void deleteBook(Integer id) {
+        Book bookToDelete = bookRepository.findById(id).orElseThrow();
+        bookRepository.deleteById(bookToDelete.getId());
+
+    }
+
 }

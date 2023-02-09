@@ -129,4 +129,17 @@ class BookServiceImplTest {
         //THEN
         Assertions.assertTrue(books.contains(bookAdded));
     }
+
+    @Test
+    void deleteBook() {
+        //GIVEN
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+
+        //WHEN
+        when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
+        bookServiceImpl.deleteBook(book1.getId());
+
+        //THEN
+        assertThat(mockBookRepository.count()).isEqualTo(0);
+    }
 }

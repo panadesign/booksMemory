@@ -12,4 +12,5 @@ public interface BookService {
     Optional<Book> getBookByAuthorLastname(String authorLastname);
     Optional<Book> getBookByEditor(String editor);
     Book addBook(Book book);
+    void deleteBook(Integer id);
 }
