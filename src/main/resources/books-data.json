@@ -3,7 +3,18 @@
     "_class": "com.BooksMemory.booksMemory.model.Book",
     "id": 1,
     "title": "Exils",
-    "author": "Joseph Koudelka",
-    "editor": "Delpire & Co"
+    "authorLastname": "Koudelka",
+    "authorFirstname": "Joseph",
+    "editor": "Delpire & Co",
+    "category": "Photographie"
+  },
+  {
+    "_class": "com.BooksMemory.booksMemory.model.Book",
+    "id": 2,
+    "title": "Sentimental Journey",
+    "authorLastname": "Araki",
+    "authorFirstname": "Nobuyoshi",
+    "editor": "HeHe",
+    "category": "Photographie"
   }
 ]

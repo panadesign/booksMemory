@@ -17,12 +17,14 @@ public class Book {
     private String authorLastname;
     private String authorFirstname;
     private String editor;
+    private String category;
 
     public Book update(Book book) {
         this.title = book.getTitle();
         this.authorLastname = book.getAuthorLastname();
         this.authorFirstname = book.getAuthorFirstname();
         this.editor = book.getEditor();
+        this.category = book.getCategory();
         return this;
     }
 }

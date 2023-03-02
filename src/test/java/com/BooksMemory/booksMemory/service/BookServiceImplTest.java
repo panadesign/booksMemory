@@ -34,8 +34,8 @@ class BookServiceImplTest {
         //GIVEN
         List<Book> bookList = new ArrayList<>();
 
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
-        Book book2 = new Book(2, "Livre2", "Lastname2", "Firstname2", "Editeur2");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
+        Book book2 = new Book(2, "Livre2", "Lastname2", "Firstname2", "Editeur2", "Categorie");
 
         bookList.add(book1);
         bookList.add(book2);
@@ -52,7 +52,7 @@ class BookServiceImplTest {
     @Test
     void getBookById() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
@@ -68,7 +68,7 @@ class BookServiceImplTest {
     @Test
     void getBookByTitle() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findByTitle(book1.getTitle())).thenReturn(Optional.of(book1));
@@ -84,7 +84,7 @@ class BookServiceImplTest {
     @Test
     void getBookByAuthorLastname() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findByAuthorLastname(book1.getAuthorLastname())).thenReturn(Optional.of(book1));
@@ -100,7 +100,7 @@ class BookServiceImplTest {
     @Test
     void getBookByEditor() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findByEditor(book1.getEditor())).thenReturn(Optional.of(book1));
@@ -117,7 +117,7 @@ class BookServiceImplTest {
     void addBook() {
         //GIVEN
         List<Book> books = new ArrayList<>();
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
         books.add(book1);
 
         //WHEN
@@ -133,7 +133,7 @@ class BookServiceImplTest {
     @Test
     void deleteBook() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
@@ -146,7 +146,7 @@ class BookServiceImplTest {
     @Test
     void updateBook() {
         //GIVEN
-        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1");
+        Book book1 = new Book(1, "Livre1", "Lastname1", "Firstname1", "Editeur1", "Categorie");
 
         //WHEN
         when(mockBookRepository.findById(book1.getId())).thenReturn(Optional.of(book1));
