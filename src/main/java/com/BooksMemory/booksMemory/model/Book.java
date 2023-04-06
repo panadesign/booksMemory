@@ -18,6 +18,7 @@ public class Book {
     private String authorFirstname;
     private String editor;
     private String category;
+    private String author = getAuthor();
 
     public Book update(Book book) {
         this.title = book.getTitle();
@@ -27,4 +28,9 @@ public class Book {
         this.category = book.getCategory();
         return this;
     }
+
+    public String getAuthor() {
+        return (getAuthorFirstname() + " " + getAuthorLastname());
+    }
+
 }
